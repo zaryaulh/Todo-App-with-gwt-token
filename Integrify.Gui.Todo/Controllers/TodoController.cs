@@ -18,18 +18,15 @@ namespace Integrify.Gui.Todo.Controllers
     {
         private readonly ILogger<TodoController> _logger;
         private readonly ITodoServcie _iTodoService;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
-
         public TodoController(ILogger<TodoController> logger, ITodoServcie iTodoService, 
             UserManager<IdentityUser> userManager)
         {
             _logger=logger;
             _iTodoService = iTodoService;
-            _userManager=userManager;
         }
         /// <summary>
-        /// 
+        /// This will use to create a Todo that will belong to a logged in user .
+        /// if you are not logged in it will not work
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
@@ -44,7 +41,7 @@ namespace Integrify.Gui.Todo.Controllers
             return Created("Data Added successfully...!!!", null);
         }
         /// <summary>
-        /// 
+        /// It will update a Todo based on the id we will provide in the controller.
         /// </summary>
         /// <param name="dto"></param>
         /// <param name="id"></param>
@@ -57,7 +54,7 @@ namespace Integrify.Gui.Todo.Controllers
             return NoContent();
         }
         /// <summary>
-        /// 
+        /// It will get us a specific Todo based on id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -70,7 +67,7 @@ namespace Integrify.Gui.Todo.Controllers
             return Ok(todoItem);    
         }
         /// <summary>
-        /// 
+        /// It will Delete the Todo item based on the id we provided.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -83,7 +80,7 @@ namespace Integrify.Gui.Todo.Controllers
             return NoContent();
         }
         /// <summary>
-        /// 
+        /// It will return us the Todo based on the Status.
         /// </summary>
         /// <param name="status"></param>
         /// <returns></returns>
@@ -96,7 +93,7 @@ namespace Integrify.Gui.Todo.Controllers
              return Ok(getAll);
         }
         /// <summary>
-        /// 
+        /// It will return all the Todo item of the Logged in user.
         /// </summary>
         /// <param name="status"></param>
         /// <returns></returns>
